@@ -1,5 +1,7 @@
-import 'package:chatbot/constants/colors.dart';
-import 'package:chatbot/services/assets_manager.dart';
+import 'package:chatbot/constants/constants.dart';
+import 'package:chatbot/view/widgets/chat_item.dart';
+import 'package:chatbot/view/widgets/custom_appbar.dart';
+import 'package:chatbot/view/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -16,37 +18,21 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.asset(AssetManager.openAiLogo)),
-        ),
-        title: const Text(
-          "ChatGPT",
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.more_vert,
-              color: Colors.white,
-            ),
-          )
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size(double.maxFinite, 70),
+        child: CustomAppBar(),
       ),
       body: SafeArea(
         child: Column(
           children: [
             Flexible(
               child: ListView.builder(
+                itemCount: 6,
                 itemBuilder: (context, index) {
-                  return Text("hello");
+                  return Chatitem(
+                      msg: chatMessages[0]['msg'].toString(),
+                      msgIndex:
+                          int.parse(chatMessages[1]['chatIndex'].toString()));
                 },
               ),
             ),
@@ -55,33 +41,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 color: Colors.white,
                 size: 18,
               ),
-              SizedBox(height: 10),
-              Container(
-                color: cardColor,
-                padding: EdgeInsetsDirectional.symmetric(horizontal: 16),
-                child: TextField(
-                  controller: controller,
-                  onSubmitted: (data) {
-                    //TODO
-                  },
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                  decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.send,
-                            color: textFieldColor,
-                          )),
-                      hintText: "How can i help you",
-                      hintStyle: TextStyle(
-                        color: textFieldColor,
-                        fontSize: 14,
-                      )),
-                ),
-              )
+              const SizedBox(height: 10),
+              CustomTextField(controller: controller),
             ]
           ],
         ),
