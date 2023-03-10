@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../../services/assets_manager.dart';
+import '../../services/services.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -23,7 +25,9 @@ class CustomAppBar extends StatelessWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () async {
+            await Services.showModalSheet(context);
+          },
           icon: const Icon(
             Icons.more_vert,
             color: Colors.white,

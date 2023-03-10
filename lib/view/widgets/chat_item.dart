@@ -35,14 +35,19 @@ class Chatitem extends StatelessWidget {
                 msgIndex == 0
                     ? const SizedBox.shrink()
                     : Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.thumb_up_alt_outlined),
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+                        children: const [
+                          Icon(
+                            Icons.thumb_up_alt_outlined,
+                            color: Colors.white,
                           ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.thumb_down_alt_outlined),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.thumb_down_alt_outlined,
+                            color: Colors.white,
                           ),
                         ],
                       ),

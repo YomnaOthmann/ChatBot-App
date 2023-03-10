@@ -27,3 +27,12 @@ final chatMessages = [
     "chatIndex": 1,
   },
 ];
+
+List<String> models = [
+  'Model1',
+  'Model2',
+  'Model3',
+  'Model4',
+  'Model5',
+  'Model6',
+];
