@@ -1,3 +1,6 @@
+import 'package:chatbot/view/widgets/custom_text.dart';
+import 'package:flutter/material.dart%20';
+
 final chatMessages = [
   {
     "msg": "Hello who are you?",
@@ -36,3 +39,16 @@ List<String> models = [
   'Model5',
   'Model6',
 ];
+
+List<DropdownMenuItem<String>>? get getModalItem {
+  return List<DropdownMenuItem<String>>.generate(
+    models.length,
+    (index) => DropdownMenuItem(
+      value: models[index],
+      child: CustomText(
+        text: models[index],
+        fontSize: 16,
+      ),
+    ),
+  );
+}

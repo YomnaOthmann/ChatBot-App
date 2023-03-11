@@ -1,3 +1,4 @@
+import 'package:chatbot/constants/colors.dart';
 import 'package:chatbot/constants/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -9,18 +10,13 @@ class CustomDropdownButton extends StatefulWidget {
 }
 
 class _CustomDropdownButtonState extends State<CustomDropdownButton> {
-  String currentModel = "Model 1";
+  late String currentModel = models[0];
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      items: models.map<DropdownMenuItem<String>>(
-        (String value) {
-          return DropdownMenuItem(
-            value: value,
-            child: Text(value),
-          );
-        },
-      ).toList(),
+      dropdownColor: scaffoldBackgroundColor,
+      iconEnabledColor: Colors.white,
+      items: getModalItem,
       value: currentModel,
       onChanged: (value) {
         setState(() {

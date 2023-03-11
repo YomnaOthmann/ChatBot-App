@@ -1,3 +1,4 @@
+import 'package:chatbot/view/widgets/custom_dropdown_button.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
@@ -19,15 +20,13 @@ class Services {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const CustomText(
-                  text: "Chosen Model:",
+              children: const [
+                Flexible(
+                  child: CustomText(
+                    text: "Chosen Model:",
+                  ),
                 ),
-                DropdownButton(
-                  style: const TextStyle(color: Colors.white),
-                  items: [],
-                  onChanged: (value) {},
-                ),
+                Flexible(child: CustomDropdownButton())
               ],
             ),
           );
